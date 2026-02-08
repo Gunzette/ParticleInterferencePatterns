@@ -21,7 +21,9 @@ var area = {
         let x = randInt(area.canvas.width);
         let xCentered = (x-(area.canvas.width/2));
         let y = randInt(area.canvas.height);
-        if(intensity(posToTheta(xCentered), globLambda, globd, globb) >= Math.random()) {
+        let I = intensity(posToTheta(xCentered), globLambda, globd, globb)  
+        let adjustedIntensity = (I/normAngleWidth(xCentered));
+        if(adjustedIntensity >= Math.random()) {
             ctx.fillRect(x, y, 2, 2);
             return 1;
         } else {
@@ -34,6 +36,8 @@ function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+
+// Physics
 function intensity(theta, lambda, d, b) {
     let inner = (Math.PI*Math.sin(theta))/lambda;
 
@@ -46,6 +50,14 @@ function intensity(theta, lambda, d, b) {
 
 function posToTheta(posCentered) {
     return Math.atan((posCentered)/globa);
+}
+
+function angleWidth(pos) {
+    return (posToTheta(pos+0.5) - posToTheta(pos-0.5));
+}
+
+function normAngleWidth(pos) {
+    return (angleWidth(pos)/angleWidth(0));
 }
 
 function randInt(max) {

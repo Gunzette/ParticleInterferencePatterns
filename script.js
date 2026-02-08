@@ -64,20 +64,12 @@ function randInt(max) {
     return Math.floor(Math.random() * max);
 }
 
-// function avgint(max, norm) {
-//     let sum = 0;
-//     for(let i = 0; i < norm; i++) {
-//         sum += randInt(max);
-//     }
-//     return sum/norm;
-// }
-
 async function init() {
     area.start();
     for(let i=0; i<1000; i++) {
-        for(let j=0; j<25; j++) {
-            area.generatePhoton();
+        for(let j=0; j<15; j++) {
+            while(!(area.generatePhoton())) {} // Wait until valid Photon
         }
-        await sleep(1);
+        //await sleep(1);
     }   
 }

@@ -1,3 +1,11 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: black;
+  color: white;
+  white-space: nowrap;
+}
+
 canvas {
   background: black;
   padding: 0;
@@ -9,4 +17,44 @@ canvas {
   left: 0;
   right: 0;
   z-index: 10;
+  border: 2px solid white;
+  border-radius: 4px;
+}
+
+#canvasDiv {
+  z-index: 10;
+}
+
+.varsContainer {
+  padding: 10px;
+  width: 0.5%;
+  right: 0;
+  top: 10%;
+  background-color: black;
+  z-index: 15;
+  height: 80%;
+  position: fixed;
+
+  border-left: 2px solid white;
+  border-top: 2px solid white;
+  border-bottom: 2px solid white;
+  border-radius: 16px 0px 0px 16px;
+
+  transition: width 0.5s;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.varsContainer:hover {
+  width: 15%;
+}
+
+.vars {
+  padding-left: 20px;
+}
+
+.vars > * {
+  padding: 0;
 }

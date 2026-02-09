@@ -1,6 +1,6 @@
 # Particle Interference Patterns
 
-This is a simulation of photons with wavelength $\lambda$ hitting a matrix of photomultipliers behind a double slit with distance $a$. The slits have a width of $b$ and the distance between their middle is $g$. 
+This is a simulation of photons with wavelength $\lambda$ hitting a matrix of photomultipliers behind a double slit with distance $a$. The slits have a width of $l$ and the distance between their middle is $g$. 
 
 ## Explaination
 
@@ -11,7 +11,7 @@ This repository uses a trick to randomise the pattern:
 3. Compute the angle $\theta$ at distance $d$ using screen-distance $a$.
 4. Compute the intensity $I$ at angle $\theta$ ([Formula from Wikipedia](https://en.wikipedia.org/wiki/Double-slit_experiment#Classical_wave-optics_formulation)):
 ```math
-I(\theta) = I_{max} \cdot cos^2 \left[ \frac{\pi g \sin(\theta)}{\lambda} \right] \cdot sinc^2 \left[ \frac{\pi b \sin(\theta)}{\lambda} \right]
+I(\theta) = I_{max} \cdot cos^2 \left[ \frac{\pi g \sin(\theta)}{\lambda} \right] \cdot sinc^2 \left[ \frac{\pi l \sin(\theta)}{\lambda} \right]
 ```
 5. Compute the "angle width" in relation to the center at $d$ using (because $d$ represents the pixels area):
 ```math

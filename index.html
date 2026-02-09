@@ -7,6 +7,16 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body onload="init()">
+    <div class="varsContainer">
+        <div class="vars">
+            <p>lambda: <input type="number" name="wavelength" id="lambda"> nm</p>
+            <p>g: <input type="number" name="distance" id="g"> µm</p>
+            <p>l: <input type="number" name="width" id="l"> µm</p>
+            <p>a: <input type="number" name="screenDistance" id="a">cm</p>
+            <button onclick="reinit()">Restart</button>
+            <p>1mm = 1px</p>
+        </div>
+    </div>
     <div id="canvasDiv"></div>
     <script src="script.js"></script>
 </body>

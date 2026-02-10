@@ -8,13 +8,15 @@ let globTicks = 1000; // total number of display ticks
 let globFreq = 15; // in kHz (inaccurate by 1%-20% lower depending on pattern)
 let globTimeVis = false; // true: "realisitic" mode; false: instant mode
 
+let globColor = "#ff0000" // Color of Photon Impacts
+
 var area = {
     canvas: document.createElement("canvas"),
     start: function() {
         this.canvas.width = window.innerWidth - 20;
         this.canvas.height = window.innerHeight - 20;
         this.context = this.canvas.getContext("2d");
-        this.context.fillStyle = "#ff0000"
+        this.context.fillStyle = globColor;
         document.getElementById("canvasDiv").insertBefore(this.canvas, document.getElementById("canvasDiv").childNodes[0])
     },
     clear: function() {
@@ -77,6 +79,7 @@ function assignGlobs() {
     document.getElementById("Ticks").value = globTicks;
     document.getElementById("f").value = globFreq;
     document.getElementById("im").checked = !(globTimeVis);
+    document.getElementById("col").value = globColor;
 }
 
 function reassignGlobs() {
@@ -86,7 +89,8 @@ function reassignGlobs() {
     globa = Number(document.getElementById("a").value) * 10;
     globTicks = Number(document.getElementById("Ticks").value);
     globFreq = Number(document.getElementById("f").value);
-    globTimeVis = !(document.getElementById("im").checked)
+    globTimeVis = !(document.getElementById("im").checked);
+    globColor = document.getElementById("col").value;
 }
 
 async function init() {
@@ -103,6 +107,7 @@ async function init() {
 async function reinit() {
     area.clear();
     reassignGlobs();
+    area.context.fillStyle = globColor;
     for(let i=0; i<globTicks; i++) {
         for(let j=0; j<globFreq; j++) {
             while(!(area.generatePhoton())) {} // Wait until valid Photon

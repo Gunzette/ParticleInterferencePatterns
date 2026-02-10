@@ -4,6 +4,10 @@ let globLambda = 0.4; //in um
 let globa = 2000; //in mm
 // pixels are mm
 
+let globTicks = 1000; // total number of display ticks
+let globFreq = 15; // in kHz (inaccurate by 1%-20% lower depending on pattern)
+let globTimeVis = false; // true: "realisitic" mode; false: instant mode
+
 var area = {
     canvas: document.createElement("canvas"),
     start: function() {
@@ -70,6 +74,9 @@ function assignGlobs() {
     document.getElementById("g").value = globg;
     document.getElementById("l").value = globl;
     document.getElementById("a").value = globa / 10;
+    document.getElementById("Ticks").value = globTicks;
+    document.getElementById("f").value = globFreq;
+    document.getElementById("im").checked = !(globTimeVis);
 }
 
 function reassignGlobs() {
@@ -77,26 +84,31 @@ function reassignGlobs() {
     globg = Number(document.getElementById("g").value);
     globl = Number(document.getElementById("l").value);
     globa = Number(document.getElementById("a").value) * 10;
+    globTicks = Number(document.getElementById("Ticks").value);
+    globFreq = Number(document.getElementById("f").value);
+    globTimeVis = !(document.getElementById("im").checked)
 }
 
 async function init() {
     area.start();
     assignGlobs();
-    for(let i=0; i<1000; i++) {
-        for(let j=0; j<15; j++) {
+    for(let i=0; i<globTicks; i++) {
+        for(let j=0; j<globFreq; j++) {
             while(!(area.generatePhoton())) {} // Wait until valid Photon
         }
         //await sleep(1);
     }   
 }
 
-function reinit() {
+async function reinit() {
     area.clear();
     reassignGlobs();
-    for(let i=0; i<1000; i++) {
-        for(let j=0; j<15; j++) {
+    for(let i=0; i<globTicks; i++) {
+        for(let j=0; j<globFreq; j++) {
             while(!(area.generatePhoton())) {} // Wait until valid Photon
         }
-        //await sleep(1);
+        if(globTimeVis) {
+            await sleep(1);
+        }
     }
 }

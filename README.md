@@ -4,7 +4,7 @@ This image may be of an outdated version
 
 This is a simulation of photons with wavelength $\lambda$ hitting a matrix of photomultipliers behind a double slit with distance $a$. The slits have a width of $l$ and the distance between their middle is $g$. 
 
-## How to use
+## How to use offline
 Just download the Project using the Github website or run this command if you have git installed:
 ```bash
 git clone https://github.com/Gunzette/ParticleInterferencePatterns.git

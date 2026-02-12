@@ -1,5 +1,5 @@
 # Particle Interference Patterns
-![alt text](/demo/Demo.jpg)
+![alt text](/demo/Demo.png)
 This image may be of an outdated version
 
 This is a simulation of photons with wavelength $\lambda$ hitting a matrix of photomultipliers behind a double slit with distance $a$. The slits have a width of $l$ and the distance between their middle is $g$. 
